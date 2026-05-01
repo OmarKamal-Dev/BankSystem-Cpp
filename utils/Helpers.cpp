@@ -71,6 +71,13 @@ string readString()
     return str;
 }
 
+string readOptionalString()
+{
+    string str;
+    getline(cin, str);
+    return str;
+}
+
 // ─────────────────────────────────────────
 //  String / Display Helpers
 // ─────────────────────────────────────────

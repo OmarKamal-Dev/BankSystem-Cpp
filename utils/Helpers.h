@@ -8,6 +8,7 @@
 
 // ─── Input Readers ───────────────────────
 std::string readString();
+std::string readOptionalString();
 int         readValidInt();
 int         readValidIntInRange(int from, int to);
 double      readValidDouble();

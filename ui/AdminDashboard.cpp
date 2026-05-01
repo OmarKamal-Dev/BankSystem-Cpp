@@ -238,7 +238,7 @@ void updateUser()
 
         // New username
         cout << "\t\t                Enter New Username (leave blank to keep current) : ";
-        string newUsername = readString();
+        string newUsername = readOptionalString();
         if (!newUsername.empty() && newUsername != users[index].username)
         {
             while (!isUsernameAvailable(newUsername, users))
@@ -251,7 +251,7 @@ void updateUser()
 
         // New password
         cout << "\t\t                Enter New Password  (leave blank to keep current) : ";
-        string newPassword = readString();
+        string newPassword = readOptionalString();
         if (!newPassword.empty())
             users[index].password = newPassword;
 
