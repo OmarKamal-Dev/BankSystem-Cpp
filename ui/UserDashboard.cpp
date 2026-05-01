@@ -285,10 +285,9 @@ void userDashboard()
 
         short perms = Session::currentUser.permissions;
 
-        // بيبني القايمة بس على الـ permissions الموجودة
         int option = 0;
-        map<int, int> menuMap;   // رقم القايمة → الـ permission
-
+        map<int, int> menuMap;   
+        
         cout << "\n";
         if (perms & PermDeposit)
         {
