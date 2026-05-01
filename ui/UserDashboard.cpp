@@ -169,10 +169,10 @@ void showUserTransactionHistory()
     }
 
     system("cls");
-    displayPanel("Y O U R   R E C E N T   T R A N S A C T I O N S", 140);
+    displayPanel("Y O U R   R E C E N T   T R A N S A C T I O N S", 144);
     cout << "\n\n";
 
-    cout << "\t\t " << setfill('*') << setw(140) << "" << "\n";
+    cout << "\t\t " << setfill('*') << setw(144) << "" << "\n";
     cout << setfill(' ');
     cout << "\t\t "
          << "* " << left << setw(12) << "TX ID"
@@ -193,7 +193,7 @@ void showUserTransactionHistory()
         string toUser   = (tx.targetAccountId == "0000") ? "BANK"
                         : getUserById(tx.targetAccountId).username;
 
-        cout << "\t\t " << setfill('*') << setw(140) << "" << "\n";
+        cout << "\t\t " << setfill('*') << setw(144) << "" << "\n";
         cout << setfill(' ');
         cout << "\t\t "
              << "* " << left << setw(12) << tx.transactionId
@@ -206,7 +206,7 @@ void showUserTransactionHistory()
              << "| " << left << setw(21) << tx.dateTime
              << "*\n";
     }
-    cout << "\t\t " << setfill('*') << setw(140) << "" << "\n";
+    cout << "\t\t " << setfill('*') << setw(144) << "" << "\n";
 
     cout << "\n\n\t\t      Press Enter to return...";
     cin.ignore();
