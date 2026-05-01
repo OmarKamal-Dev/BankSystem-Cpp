@@ -37,4 +37,4 @@ void recordTransaction(double amount, enTransactionType type, const std::string&
 std::string generateUniqueUserId();
 std::string generateUniqueTransactionId();
 
-#endif // STORAGE_H
+#endif
