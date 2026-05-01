@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <map>
 #include "UserDashboard.h"
 #include "../core/Types.h"
 #include "../core/Auth.h"
@@ -282,29 +283,65 @@ void userDashboard()
         system("cls");
         displayPanel(Session::currentUser.username + "'s Dashboard");
 
-        cout << "\t\t                         [1] Show Balance\n\n";
-        cout << "\t\t                         [2] Deposit Money\n\n";
-        cout << "\t\t                         [3] Withdraw Money\n\n";
-        cout << "\t\t                         [4] Transfer Money\n\n";
-        cout << "\t\t                         [5] Borrow Money\n\n";
-        cout << "\t\t                         [6] Transaction History\n\n";
-        cout << "\t\t                         [7] Update Profile\n\n";
+        short perms = Session::currentUser.permissions;
+
+        // بيبني القايمة بس على الـ permissions الموجودة
+        int option = 0;
+        map<int, int> menuMap;   // رقم القايمة → الـ permission
+
+        cout << "\n";
+        if (perms & PermDeposit)
+        {
+            menuMap[++option] = PermDeposit;
+            cout << "\t\t                         [" << option << "] Deposit Money\n\n";
+        }
+        if (perms & PermWithdraw)
+        {
+            menuMap[++option] = PermWithdraw;
+            cout << "\t\t                         [" << option << "] Withdraw Money\n\n";
+        }
+        if (perms & PermTransfer)
+        {
+            menuMap[++option] = PermTransfer;
+            cout << "\t\t                         [" << option << "] Transfer Money\n\n";
+        }
+        if (perms & PermBorrow)
+        {
+            menuMap[++option] = PermBorrow;
+            cout << "\t\t                         [" << option << "] Borrow Money\n\n";
+        }
+
+        cout << "\t\t                         [" << ++option << "] Show Balance\n\n";
+        int balanceOption = option;
+
+        cout << "\t\t                         [" << ++option << "] Transaction History\n\n";
+        int historyOption = option;
+
+        if (perms & PermUpdateProfile)
+        {
+            cout << "\t\t                         [" << ++option << "] Update Profile\n\n";
+        }
+        int updateOption = (perms & PermUpdateProfile) ? option : -1;
+
         cout << "\t\t                         [0] Logout\n\n\n";
         cout << "\t\t                                   Enter Your Option : ";
 
-        int choice = readValidIntInRange(0, 7);
+        int choice = readValidIntInRange(0, option);
+        if (choice == 0) return;
 
-        switch (choice)
+        if (choice == balanceOption)  showBalance();                
+        if (choice == historyOption)  showUserTransactionHistory(); 
+        if (choice == updateOption)   updateUserProfile();          
+
+        if (menuMap.count(choice))
         {
-        case 1: showBalance();                break;
-        case 2: depositMoney();               break;
-        case 3: withdrawMoney();              break;
-        case 4: transferMoney();              break;
-        case 5: borrowMoney();                break;
-        case 6: showUserTransactionHistory(); break;
-        case 7: updateUserProfile();          break;
-        case 0: return;
-        default: break;
+            switch (menuMap[choice])
+            {
+            case PermDeposit:  depositMoney();  break;
+            case PermWithdraw: withdrawMoney(); break;
+            case PermTransfer: transferMoney(); break;
+            case PermBorrow:   borrowMoney();   break;
+            }
         }
     }
 }
