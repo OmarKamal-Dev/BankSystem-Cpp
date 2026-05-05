@@ -12,10 +12,10 @@ BankSystem/
 │
 ├── core/
 │   ├── Types.h                     ← Structs, enums, Session namespace
-│   ├── Auth.h / Auth.cpp           ← Login, password validation, user lookup
+│   └── Auth.h / Auth.cpp           ← Login, password validation, user lookup
 │
 ├── data/
-│   ├── Storage.h / Storage.cpp     ← File I/O, balance updates, transaction recording
+│   └── Storage.h / Storage.cpp     ← File I/O, balance updates, transaction recording
 │
 ├── db/
 │   ├── users.txt                   ← Persistent user accounts
@@ -23,10 +23,10 @@ BankSystem/
 │
 ├── ui/
 │   ├── UserDashboard.h/.cpp        ← All regular-user screens and operations
-│   ├── AdminDashboard.h/.cpp       ← All admin screens and management tools
+│   └── AdminDashboard.h/.cpp       ← All admin screens and management tools
 │
 └── utils/
-    ├── Helpers.h / Helpers.cpp     ← Input readers, formatters, ID generator, UI panels
+    └── Helpers.h / Helpers.cpp     ← Input readers, formatters, ID generator, UI panels
 ```
 
 ---
